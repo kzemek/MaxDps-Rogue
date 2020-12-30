@@ -103,6 +103,7 @@ function Rogue:Outlaw()
 
 	MaxDps:GlowEssences();
 	MaxDps:GlowCooldown(OL.AdrenalineRush, cooldown[OL.AdrenalineRush].ready);
+	MaxDps:GlowCooldown(OL.Vanish, comboPointsDeficit >= 2 and cooldown[OL.Vanish].ready);
 	--ADRENALINE RUSH KILLING SPREE BLADE RUSH MARKED FOR DEATH
 	-- adrenaline_rush,if=!buff.adrenaline_rush.up&energy.time_to_max>1;
 	--if cooldown[OL.AdrenalineRush].ready and not buff[OL.AdrenalineRush].up and energyTimeToMax > 1 then
@@ -148,10 +149,6 @@ function Rogue:Outlaw()
 
 	if comboPointsDeficit <= 1 and cooldown[OL.Dispatch].ready then
 		return OL.Dispatch;
-	end
-
-	if comboPointsDeficit >= 2 and cooldown[OL.Vanish].ready then
-		return OL.Vanish;
 	end
 
 	if comboPointsDeficit >= 2 and buff[OL.Opportunity].up then
